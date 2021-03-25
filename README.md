@@ -67,7 +67,7 @@ Develop an application to manage restaurant orders. The proposal is to implement
 
 - Typescript;
 - Grid layout;
-- Custom hooks;
+- Custom hooks / Composition API;
 - Order search implementation;
 - Unit tests implementation;
 - CI/CD implementation (preferably using GitHub Actions).
