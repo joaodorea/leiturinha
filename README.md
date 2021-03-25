@@ -17,10 +17,12 @@ Develop an application to manage restaurant orders. The proposal is to implement
 
 #### Prerequisites
 
-- The application must be developed using React (You can use NextJS or CRA);
+- The application must be developed using React or Vue;
 - Feel free to bootstrap the project using your own environment configuration;
 - The application must have a single-page application (SPA) architecture;
-- State management must use [XState](https://github.com/davidkpiano/xstate) or [mobx-state-tree](https://mobx-state-tree.js.org/intro/welcome);
+- State management
+  - for React: [XState](https://github.com/davidkpiano/xstate) or [mobx-state-tree](https://mobx-state-tree.js.org/intro/welcome);
+  - for Vue you can use Vuex or similar.
 - Must use [sass](https://sass-lang.com/) or [styled-components](https://styled-components.com/);
 - Do not use any third party frameworks for styling (Bootstrap, TailwindCSS or similars);
 - The application must have two main modules: **Orders** and **Billing**;
