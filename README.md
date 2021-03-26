@@ -60,7 +60,7 @@ Develop an application to manage restaurant orders. The proposal is to implement
 - Programming logic;
 - HTML semantics;
 - UI/UX;
-- React knowledge;
+- React/Vue knowledge;
 - Git use (Nothing fancy, we'll just take a look on how you prefer to organize your commits).
 
 #### Bonus
