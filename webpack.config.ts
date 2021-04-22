@@ -9,7 +9,10 @@ const webpackConfig = (env): Configuration => ({
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
     //@ts-ignore
-    plugins: [new TsconfigPathsPlugin()]
+    plugins: [new TsconfigPathsPlugin()],
+    alias: {
+      '@': path.resolve(__dirname, 'src/')
+    }
   },
   output: {
     path: path.join(__dirname, "/dist"),
