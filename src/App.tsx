@@ -1,6 +1,6 @@
 import React from "react";
-import HelloWorld from "components/HelloWorld";
+import "./assets/styles/index.scss";
 
-const App: React.FC = () => <HelloWorld />;
+const App: React.FC = () => <h1>Olar mundo</h1>;
 
 export default App;
