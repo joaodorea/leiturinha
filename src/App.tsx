@@ -1,6 +1,8 @@
 import React from "react";
-import "./assets/styles/index.scss";
+import Orders from "./modules/orders/views"
 
-const App: React.FC = () => <h1>Olar mundo</h1>;
+import "@/assets/styles/index.scss";
+
+const App: React.FC = () => <Orders />;
 
 export default App;
