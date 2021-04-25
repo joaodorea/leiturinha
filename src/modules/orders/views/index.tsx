@@ -1,14 +1,15 @@
 import React from 'react'
-import productsList from '@/assets/mocks/products.json'
 import Product from '@/models/Product'
+
+import ItemsMenu from '../components/itemsMenu'
+
+import productsList from '@/assets/mocks/products.json'
 
 const Orders: React.FC = () => {
   const products: Product[] = productsList as Product[]
   
   return (
-    <ul>
-      { products.map( (product) => <li key={product.id}>{ product.name }</li>) }
-    </ul>
+    <ItemsMenu products={products} />
   )
 }
 
