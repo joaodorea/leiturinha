@@ -12,23 +12,22 @@ interface OrderSummaryProps {
 
 const OrderSummary = (props: OrderSummaryProps) => {
   const [ context, setContext ] = useContext(AppContext)
-  const [ total, setTotal ] = useState(0)
-
-  const goToPayment = (): void => {
-    setContext({ ...context, step: 'payment' })
-  }
+  const [ total, setTotal ] = useState(context.total)
 
   useEffect(() => {
-    const total = props.order.reduce((init: number, actual: ProductsOrder): number => {
+    const newTotal = props.order.reduce((init: number, actual: ProductsOrder): number => {
       const product = props.products.find(p => p.id === actual.product_id)
       init += product.price * actual.quantity
 
       return init
     }, 0)
-    
-    setTotal(total)
-    setContext({ ...context, total })
+
+    setTotal(newTotal)
   }, [props.order])
+
+  const goToPayment = (): void => {
+    setContext({ ...context, step: 'payment', total })
+  }
 
   return (
     <aside>
