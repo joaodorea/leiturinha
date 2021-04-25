@@ -11,7 +11,7 @@ const Orders: React.FC = () => {
   const products: Product[] = productsList as Product[]
   const [ context, setContext ] = useContext(AppContext)
   const [ order, setOrder ] = useState<ProductsOrder[]>(context.order)
-  const [ total, setTotal ] = useState(context.total)
+  const [ total, setTotal ] = useState(0)
 
   useEffect(() => {
     setTotal(() => order.reduce((init: number, actual: ProductsOrder): number => {
@@ -21,8 +21,12 @@ const Orders: React.FC = () => {
       return init
     }, 0))
 
-    setContext({ order, total })
+    setContext({ ...context, order })
   }, [ order ])
+
+  const goToPayment = (): void => {
+    setContext({ ...context, step: 'payment' })
+  }
   
   return (
     <>
@@ -37,7 +41,7 @@ const Orders: React.FC = () => {
       </ul>
 
       <h2>Total {utils.formatMoney(total)}</h2>
-      <button disabled={!order.length}>Choose Payment Option</button>
+      <button disabled={!order.length} onClick={goToPayment}>Choose Payment Option</button>
     </>
   )
 }

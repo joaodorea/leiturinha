@@ -4,11 +4,13 @@ import ProductsOrder from '@/models/ProductsOrder';
 type IContext = {
   order: ProductsOrder[]
   total: number
+  step: string
 }
 
 const initState: IContext = {
   order: [],
-  total: 0
+  total: 0,
+  step: ''
 }
 
 interface IAppContext extends Array<IContext | Function> {

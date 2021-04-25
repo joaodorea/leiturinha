@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
-import ItemSingle from './itemSingle'
 import Product from '@/models/Product'
 import ProductsOrder from '@/models/ProductsOrder'
+import ItemSingle from './itemSingle'
+import { AppContext } from '@/state/context'
 
 interface ItemsMenuProps {
   products: Product[]
@@ -10,7 +11,8 @@ interface ItemsMenuProps {
 }
 
 const ItemsMenu = (props: ItemsMenuProps) => {
-  const [ productsOrder, setProducts ] = useState<ProductsOrder[]>([])
+  const [ context ] = useContext(AppContext)
+  const [ productsOrder, setProducts ] = useState<ProductsOrder[]>(context.order)
 
   useEffect(() => props.updateOrder(productsOrder), [productsOrder])
 
