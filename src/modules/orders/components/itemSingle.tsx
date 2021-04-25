@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Product from '@/models/Product'
+import utils from '@/utils/index'
 
 interface ItemSingleProps {
   product: Product
@@ -20,7 +21,7 @@ const ItemSingle = (props: ItemSingleProps) => {
 
       <span className="item-name">{props.product.name}</span>
 
-      <span className="item-price">{props.product.price}</span>
+      <span className="item-price">{utils.formatMoney(props.product.price)}</span>
     </li>
   )
 }
