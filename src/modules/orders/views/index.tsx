@@ -5,44 +5,20 @@ import ProductsOrder from '@/models/ProductsOrder'
 import { AppContext } from '@/state/context'
 import ItemsMenu from '../components/itemsMenu'
 import productsList from '@/assets/mocks/products.json'
-import utils from '@/utils/index'
+import OrderSummary from '../components/OrderSummary'
 
 const Orders: React.FC = () => {
   const products: Product[] = productsList as Product[]
   const [ context, setContext ] = useContext(AppContext)
   const [ order, setOrder ] = useState<ProductsOrder[]>(context.order)
-  const [ total, setTotal ] = useState(0)
 
-  useEffect(() => {
-    setTotal(() => order.reduce((init: number, actual: ProductsOrder): number => {
-      const product = products.find(p => p.id === actual.product_id)
-      init += product.price * actual.quantity
-
-      return init
-    }, 0))
-
-    setContext({ ...context, order })
-  }, [ order ])
-
-  const goToPayment = (): void => {
-    setContext({ ...context, step: 'payment' })
-  }
+  useEffect(() => setContext({ ...context, order }), [ order ])
   
   return (
-    <>
+    <section>
       <ItemsMenu updateOrder={setOrder} products={products} />
-
-      <ul>
-        {order.map( item => {
-          const product: Product = products.find(p => p.id === item.product_id)
-
-          return <li key={product.id}>{item.quantity}x {product.name}</li>
-        })}
-      </ul>
-
-      <h2>Total {utils.formatMoney(total)}</h2>
-      <button disabled={!order.length} onClick={goToPayment}>Choose Payment Option</button>
-    </>
+      <OrderSummary order={order} products={products} />
+    </section>
   )
 }
 
