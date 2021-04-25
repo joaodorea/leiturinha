@@ -1,19 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import ItemSingle from './itemSingle'
 import Product from '@/models/Product'
+import ProductsOrder from '@/models/ProductsOrder'
 
-type ItemsMenuProps = {
+interface ItemsMenuProps {
   products: Product[]
-}
-
-type ProductsOrder = {
-  product_id: number
-  quantity: number
+  updateOrder: (products: ProductsOrder[]) => void
 }
 
 const ItemsMenu = (props: ItemsMenuProps) => {
   const [ productsOrder, setProducts ] = useState<ProductsOrder[]>([])
+
+  useEffect(() => props.updateOrder(productsOrder), [productsOrder])
 
   const addItem = (id: number): void => {
     const item = productsOrder.find(product => product.product_id === id)
@@ -28,6 +27,7 @@ const ItemsMenu = (props: ItemsMenuProps) => {
         item.quantity++
       return item
     })
+    
     setProducts(updatedList)
   }
 
@@ -49,7 +49,6 @@ const ItemsMenu = (props: ItemsMenuProps) => {
           return product
         })
       )
-
   }
 
   const foods: Product[] = props.products.filter(prod => prod.category === 'food')
@@ -62,7 +61,7 @@ const ItemsMenu = (props: ItemsMenuProps) => {
           const order: ProductsOrder = productsOrder.find(item => item.product_id === product.id)
 
           return (
-            <ItemSingle addItem={addItem} removeItem={removeItem} product={product}>
+            <ItemSingle key={product.id} addItem={addItem} removeItem={removeItem} product={product}>
               { order ? order.quantity : 0 }
             </ItemSingle>
           )
@@ -74,7 +73,7 @@ const ItemsMenu = (props: ItemsMenuProps) => {
           const order: ProductsOrder = productsOrder.find(item => item.product_id === product.id)
 
           return (
-            <ItemSingle addItem={addItem} removeItem={removeItem} product={product}>
+            <ItemSingle key={product.id} addItem={addItem} removeItem={removeItem} product={product}>
               { order ? order.quantity : 0 }
             </ItemSingle>
           )
