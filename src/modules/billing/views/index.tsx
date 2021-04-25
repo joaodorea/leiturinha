@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 
 import { AppContext } from '@/state/context'
+import PaymentForm from '../components/PaymentForm'
+import utils from '@/utils/index'
 
 const Billing = () => {
   const [ context, setContext ] = useContext(AppContext)
@@ -10,10 +12,15 @@ const Billing = () => {
   }
 
   return (
-    <div>
+    <section>
       <h1>Payment Options</h1>
+
+      <PaymentForm>
+        <button className="btn">Pay {utils.formatMoney(context.total)}</button>
+      </PaymentForm>
+
       <button onClick={goToOrders}>Back</button>
-    </div>
+    </section>
   )
 }
 
