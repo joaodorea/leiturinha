@@ -20,7 +20,8 @@ const ItemsMenu = (props: ItemsMenuProps) => {
     const item = productsOrder.find(product => product.product_id === id)
     
     if(!item) {
-      setProducts([...productsOrder, { product_id: id, quantity: 1 }])
+      const product: Product = props.products.find(prod => prod.id === id)
+      setProducts([...productsOrder, { product_id: id, quantity: 1, name: product.name }])
       return
     }
 
