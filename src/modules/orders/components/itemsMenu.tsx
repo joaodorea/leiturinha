@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+import ItemSingle from './itemSingle'
 import Product from '@/models/Product'
 
 type ItemsMenuProps = {
@@ -14,11 +15,13 @@ type ProductsOrder = {
 const ItemsMenu = (props: ItemsMenuProps) => {
   const [ productsOrder, setProducts ] = useState<ProductsOrder[]>([])
 
-  const addItem = (id: number) => {
+  const addItem = (id: number): void => {
     const item = productsOrder.find(product => product.product_id === id)
     
-    if(!item)
-      return setProducts([...productsOrder, { product_id: id, quantity: 1 }])
+    if(!item) {
+      setProducts([...productsOrder, { product_id: id, quantity: 1 }])
+      return
+    }
 
     const updatedList = productsOrder.map(item => {
       if(item.product_id === id)
@@ -28,7 +31,7 @@ const ItemsMenu = (props: ItemsMenuProps) => {
     setProducts(updatedList)
   }
 
-  const removeItem = (id: number) => {
+  const removeItem = (id: number): void => {
     const item = productsOrder.find(product => product.product_id === id)
     if(!item) return
 
@@ -59,17 +62,9 @@ const ItemsMenu = (props: ItemsMenuProps) => {
           const order: ProductsOrder = productsOrder.find(item => item.product_id === product.id)
 
           return (
-            <li className="item" key={product.id}>
-              <span>
-                <span onClick={() => removeItem(product.id)}>-</span>
-                <span>{ order ? order.quantity : 0 }</span>
-                <span onClick={() => addItem(product.id)}>+</span>
-              </span>
-
-              <span className="item-name">{product.name}</span>
-
-              <span className="item-price">{product.price}</span>
-            </li>
+            <ItemSingle addItem={addItem} removeItem={removeItem} product={product}>
+              { order ? order.quantity : 0 }
+            </ItemSingle>
           )
         })}
       </ul>
@@ -79,17 +74,9 @@ const ItemsMenu = (props: ItemsMenuProps) => {
           const order: ProductsOrder = productsOrder.find(item => item.product_id === product.id)
 
           return (
-            <li className="item" key={product.id}>
-              <span>
-                <span onClick={() => removeItem(product.id)}>-</span>
-                <span>{ order ? order.quantity : 0 }</span>
-                <span onClick={() => addItem(product.id)}>+</span>
-              </span>
-
-              <span className="item-name">{product.name}</span>
-
-              <span className="item-price">{product.price}</span>
-            </li>
+            <ItemSingle addItem={addItem} removeItem={removeItem} product={product}>
+              { order ? order.quantity : 0 }
+            </ItemSingle>
           )
         })}
       </ul>
