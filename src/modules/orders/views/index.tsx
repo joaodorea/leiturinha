@@ -5,7 +5,7 @@ import ProductsOrder from '@/models/ProductsOrder'
 import { AppContext } from '@/state/context'
 import ItemsMenu from '../components/itemsMenu'
 import productsList from '@/assets/mocks/products.json'
-import OrderSummary from '../components/OrderSummary'
+import OrderSummary from '../components/orderSummary'
 
 const Orders: React.FC = () => {
   const products: Product[] = productsList as Product[]
