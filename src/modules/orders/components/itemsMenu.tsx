@@ -57,6 +57,13 @@ const ItemsMenu = (props: ItemsMenuProps) => {
   const foods: Product[] = props.products.filter(prod => prod.category === 'food')
   const drinks: Product[] = props.products.filter(prod => prod.category === 'drink')
 
+  if(!props.products.length)
+    return (
+      <section className="items-menu">
+        <span className="loading">Loading...</span>
+      </section>
+    )
+
   return (
     <section className="items-menu">
       <ul className="menu">
