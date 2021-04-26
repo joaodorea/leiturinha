@@ -10,7 +10,8 @@
     "build:app": "webpack --mode=production --env production --progress",
     "lint": "eslint './src/**/*.{ts,tsx}'",
     "lint:fix": "eslint './src/**/*.{ts,tsx}' --fix",
-    "build": "npm run build:app && serve ./dist"
+    "build": "npm run build:app",
+    "serve": "npm run build:app && serve ./dist"
   },
   "devDependencies": {
     "@types/node": "13.13.50",
