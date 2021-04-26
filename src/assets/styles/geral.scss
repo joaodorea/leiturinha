@@ -14,16 +14,6 @@ a {
   box-sizing: border-box;
 }
 
-form {
-  margin-bottom: 20px;
-
-  input[type=text] {
-    display: block;
-    margin-top: 10px;
-    margin-bottom: 20px;
-  }
-}
-
 label {
   display: block;
 }
@@ -31,18 +21,6 @@ label {
 button {
   font-size: 1rem;
   cursor: pointer;
-}
-
-.form-input {
-  border: 1px solid gray;
-  border-radius: 4px;
-  height: 40px;
-  // width: 100%;
-  outline: none;
-  padding: 8px;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5em;
 }
 
 .btn {
@@ -53,4 +31,6 @@ button {
 
 #root {
   overflow-x: hidden;
+  max-width: 1200px;
+  margin: auto;
 }
