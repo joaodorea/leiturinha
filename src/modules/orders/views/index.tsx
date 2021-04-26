@@ -5,7 +5,7 @@ import ProductsOrder from '@/models/ProductsOrder'
 import { AppContext } from '@/state/context'
 import getProdutcs from '@/adapters/fetchproducts'
 import ItemsMenu from '../components/itemsMenu'
-import OrderSummary from '../components/orderSummary'
+import OrderSummary from '../components/ordersSummary'
 
 import '@/assets/styles/orders.scss'
 
