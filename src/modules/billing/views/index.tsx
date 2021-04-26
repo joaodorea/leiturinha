@@ -24,12 +24,12 @@ const Billing = () => {
       <h1 className="title">Payment Options</h1>
 
       <PaymentForm submitForm={submitForm}>
-        <button className="btn">Pay {utils.formatMoney(context.total)}</button>
+        Pay {utils.formatMoney(context.total)}
       </PaymentForm>
 
       <PaymentOrder total={utils.formatMoney(context.total)} order={context.order} />
 
-      <button onClick={goToOrders}>Back</button>
+      <span className="back-button" onClick={goToOrders}>Back to orders page</span>
     </section>
   )
 }
