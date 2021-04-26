@@ -60,9 +60,9 @@ $ git clone https://github.com/joaodorea/leiturinha.git
 $ npm install
 
 # To execute the app on development  mode run:
-$ npm run start
+$ npm run serve
 
-# The app will be open on port:8080 - access http://localhost:8080
+# The app should be open on port:5000 - access http://localhost:5000
 ```
 
 ## Build with
