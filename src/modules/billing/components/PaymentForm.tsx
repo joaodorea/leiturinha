@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 export type FormFields = {
   cardNumber: string
@@ -6,6 +6,7 @@ export type FormFields = {
   expMonth: string
   expYear: string
   cvvNumber: string
+  agree: boolean
 }
 
 const init: FormFields = {
@@ -13,7 +14,8 @@ const init: FormFields = {
   cardName: '',
   expMonth: '',
   expYear: '',
-  cvvNumber: ''
+  cvvNumber: '',
+  agree: false
 }
 
 type PaymentFormProps = {
@@ -23,6 +25,8 @@ type PaymentFormProps = {
 
 const PaymentForm = (props: PaymentFormProps) => {
   const [formFields, setField] = useState<FormFields>(init)
+  const [isFormValid, setFormValid] = useState(false)
+  const formRef = useRef<HTMLFormElement>(null)
 
   const onChange = (e: React.FormEvent<HTMLInputElement>): void => {
     const { name, value, size } = e.currentTarget
@@ -31,6 +35,7 @@ const PaymentForm = (props: PaymentFormProps) => {
       return
 
     setField({ ...formFields, [name]: value})
+    setFormValid(formRef.current.checkValidity())
   }
 
   const submit = (e: React.SyntheticEvent):void => {
@@ -39,7 +44,7 @@ const PaymentForm = (props: PaymentFormProps) => {
   }
 
   return (
-    <form onSubmit={submit}>
+    <form ref={formRef} onSubmit={submit}>
       <label>
         Card Number*
           <input required value={formFields.cardNumber} size={16} onChange={onChange} className="form-input" type="number" placeholder="Ex. 1234-5678-9876-5667" name="cardNumber" id="card-number" />
@@ -66,11 +71,11 @@ const PaymentForm = (props: PaymentFormProps) => {
       </label>
 
       <label>
-        <input required type="checkbox" name="agree" id="agree" />
+        <input checked={formFields.agree} required type="checkbox" name="agree" id="agree" onChange={onChange} />
           I agree to the <u>Term & Conditions</u> and <u>Privacy Policy</u>.
       </label>
 
-      { props.children}
+      <button type="submit" disabled={!isFormValid} className="btn">{ props.children }</button>
     </form>
   )
 }
