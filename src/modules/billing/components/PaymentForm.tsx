@@ -44,7 +44,7 @@ const PaymentForm = (props: PaymentFormProps) => {
   }
 
   return (
-    <form ref={formRef} onSubmit={submit}>
+    <form ref={formRef} onSubmit={submit} className="payment-form">
       <label>
         Card Number*
           <input required value={formFields.cardNumber} size={16} onChange={onChange} className="form-input" type="number" placeholder="Ex. 1234-5678-9876-5667" name="cardNumber" id="card-number" />

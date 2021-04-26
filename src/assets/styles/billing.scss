@@ -8,7 +8,7 @@
     grid-column: 1 / 3;
   }
 
-  form {
+  .payment-form {
     margin-bottom: 20px;
 
     .form-input {
@@ -29,11 +29,21 @@
     .btn {
       margin-top: 30px;
     }
+
+    @media screen and (max-width: 768px) {
+      order: 1;
+    }
   }
 
   .back-button {
     color: #525252;
     text-decoration: underline;
     cursor: pointer;
+    order: 2;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
   }
 }
