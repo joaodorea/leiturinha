@@ -11,7 +11,7 @@ const Billing = () => {
   const [ context, setContext ] = useContext(AppContext)
 
   const goToOrders = (): void => {
-    setContext({ ...context, step: 'orders' })
+    setContext({ ...context, step: 'order' })
   }
 
   return (
