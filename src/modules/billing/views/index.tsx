@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-import PaymentForm from '../components/PaymentForm'
+import PaymentForm, { FormFields } from '../components/PaymentForm'
 import PaymentOrder from '../components/PaymentOrder'
 import { AppContext } from '@/state/context'
 import utils from '@/utils/index'
@@ -14,11 +14,16 @@ const Billing = () => {
     setContext({ ...context, step: 'order' })
   }
 
+  const submitForm = (formFields: FormFields): void => {
+    alert(`Congratulations ${formFields.cardName}! Successful payment!`)
+    goToOrders()
+  }
+
   return (
     <section className="billing">
       <h1 className="title">Payment Options</h1>
 
-      <PaymentForm>
+      <PaymentForm submitForm={submitForm}>
         <button className="btn">Pay {utils.formatMoney(context.total)}</button>
       </PaymentForm>
 

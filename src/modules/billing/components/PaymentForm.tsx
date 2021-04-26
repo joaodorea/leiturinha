@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-type FormFields = {
+export type FormFields = {
   cardNumber: string
   cardName: string
   expMonth: string
@@ -16,7 +16,12 @@ const init: FormFields = {
   cvvNumber: ''
 }
 
-const PaymentForm = (props) => {
+type PaymentFormProps = {
+  children: React.ReactNode
+  submitForm: (formFields: FormFields) => void
+}
+
+const PaymentForm = (props: PaymentFormProps) => {
   const [formFields, setField] = useState<FormFields>(init)
 
   const onChange = (e: React.FormEvent<HTMLInputElement>): void => {
@@ -28,11 +33,16 @@ const PaymentForm = (props) => {
     setField({ ...formFields, [name]: value})
   }
 
+  const submit = (e: React.SyntheticEvent):void => {
+    e.preventDefault()
+    props.submitForm(formFields)
+  }
+
   return (
-    <form>
+    <form onSubmit={submit}>
       <label>
         Card Number*
-          <input required value={formFields.cardNumber} onChange={onChange} className="form-input" type="number" placeholder="Ex. 1234-5678-9876-5667" name="cardNumber" id="card-number" />
+          <input required value={formFields.cardNumber} size={16} onChange={onChange} className="form-input" type="number" placeholder="Ex. 1234-5678-9876-5667" name="cardNumber" id="card-number" />
       </label>
 
       <label>
@@ -42,7 +52,7 @@ const PaymentForm = (props) => {
 
       <label>
         Exp Month*
-          <input required min="1" max="12" size={4} value={formFields.expMonth} onChange={onChange} className="form-input" type="number" placeholder="Ex. 2020" name="expMonth" id="exp-month" />
+          <input required min="1" max="12" size={2} value={formFields.expMonth} onChange={onChange} className="form-input" type="number" placeholder="Ex. 10" name="expMonth" id="exp-month" />
       </label>
 
       <label>
@@ -56,7 +66,7 @@ const PaymentForm = (props) => {
       </label>
 
       <label>
-        <input type="checkbox" name="agree" id="agree" />
+        <input required type="checkbox" name="agree" id="agree" />
           I agree to the <u>Term & Conditions</u> and <u>Privacy Policy</u>.
       </label>
 
