@@ -1,31 +1,58 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+type FormFields = {
+  cardNumber: string
+  cardName: string
+  expMonth: string
+  expYear: string
+  cvvNumber: string
+}
+
+const init: FormFields = {
+  cardNumber: '',
+  cardName: '',
+  expMonth: '',
+  expYear: '',
+  cvvNumber: ''
+}
 
 const PaymentForm = (props) => {
+  const [formFields, setField] = useState<FormFields>(init)
+
+  const onChange = (e: React.FormEvent<HTMLInputElement>): void => {
+    const { name, value, size } = e.currentTarget
+
+    if(value.length > size)
+      return
+
+    setField({ ...formFields, [name]: value})
+  }
+
   return (
     <form>
       <label>
         Card Number*
-          <input className="form-input" type="text" name="card-number" id="card-number" />
+          <input required value={formFields.cardNumber} onChange={onChange} className="form-input" type="number" placeholder="Ex. 1234-5678-9876-5667" name="cardNumber" id="card-number" />
       </label>
 
       <label>
         Name on Card*
-          <input className="form-input" type="text" name="name-card" id="name-card" />
+          <input required value={formFields.cardName} onChange={onChange} className="form-input" type="text" placeholder="Ex. John Doe" name="cardName" id="name-card" />
       </label>
 
       <label>
         Exp Month*
-          <input className="form-input" type="text" name="exp-month" id="exp-month" />
+          <input required min="1" max="12" size={4} value={formFields.expMonth} onChange={onChange} className="form-input" type="number" placeholder="Ex. 2020" name="expMonth" id="exp-month" />
       </label>
 
       <label>
         Exp Year*
-          <input className="form-input" type="text" name="exp-year" id="exp-year" />
+          <input required min="2021" max="2030" size={4} value={formFields.expYear} onChange={onChange} className="form-input" type="number" name="expYear" placeholder="Ex. 2025" id="exp-year" />
       </label>
 
       <label>
-        CVV Number**
-          <input className="form-input" type="text" name="cvv-number" id="cvv-number" />
+        CVV Number*
+          <input required min="0" max="999" size={3} value={formFields.cvvNumber} onChange={onChange} className="form-input" type="number" placeholder="Ex. 123" name="cvvNumber" id="cvv-number" />
       </label>
 
       <label>
