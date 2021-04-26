@@ -12,7 +12,7 @@ const PaymentOrder = (props: PaymentOrderProps) => {
       {/* <h2>{ customerName }'s order</h2> */}
       <ul>
         { props.order.map( item => {
-          return <li>{item.name} <span>{item.quantity}</span></li>
+          return <li key={item.product_id}>{item.name} <span>{item.quantity}</span></li>
         })}
       </ul>
 
