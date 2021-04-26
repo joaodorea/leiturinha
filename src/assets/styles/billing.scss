@@ -1,0 +1,8 @@
+.billing {
+  display: grid;
+  grid-template: auto auto / 1fr 1fr;
+
+  .title {
+    grid-column: 1 / 3;
+  }
+}
