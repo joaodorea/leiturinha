@@ -1,16 +1,18 @@
 import React, { useState, createContext } from 'react'
 import ProductsOrder from '@/models/ProductsOrder';
 
+type steps = 'payment' | 'order'
+
 type IContext = {
   order: ProductsOrder[]
   total: number
-  step: string
+  step: steps
 }
 
 const initState: IContext = {
   order: [],
   total: 0,
-  step: ''
+  step: 'payment'
 }
 
 interface IAppContext extends Array<IContext | Function> {
