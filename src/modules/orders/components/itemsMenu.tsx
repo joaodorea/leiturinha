@@ -58,8 +58,8 @@ const ItemsMenu = (props: ItemsMenuProps) => {
   const drinks: Product[] = props.products.filter(prod => prod.category === 'drink')
 
   return (
-    <section>
-      <ul>
+    <section className="items-menu">
+      <ul className="menu">
         {foods.map((product) => {
           const order: ProductsOrder = productsOrder.find(item => item.product_id === product.id)
 
@@ -71,7 +71,7 @@ const ItemsMenu = (props: ItemsMenuProps) => {
         })}
       </ul>
       
-      <ul>
+      <ul className="menu">
         {drinks.map((product) => {
           const order: ProductsOrder = productsOrder.find(item => item.product_id === product.id)
 

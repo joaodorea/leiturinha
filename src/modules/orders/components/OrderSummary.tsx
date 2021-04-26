@@ -30,17 +30,22 @@ const OrderSummary = (props: OrderSummaryProps) => {
   }
 
   return (
-    <aside>
-      <ul>
+    <aside className="order-sumary">
+      <ul className="order-list">
         {props.order.map(item => {
           const product: Product = props.products.find(p => p.id === item.product_id)
+          const productTotal = product.price * item.quantity
 
-          return <li key={product.id}>{item.quantity}x {product.name}</li>
+          return <li className="item" key={product.id}>
+            <span className="item-quantity">{item.quantity}x</span>
+            <span className="item-name">{product.name}</span>
+            <span className="item-total">{utils.formatMoney(productTotal)}</span>
+          </li>
         })}
       </ul>
 
       <h2>Total {utils.formatMoney(total)}</h2>
-      <button disabled={!props.order.length} onClick={goToPayment}>Choose Payment Option</button>
+      <button className="btn" disabled={!props.order.length} onClick={goToPayment}>Choose Payment Option</button>
     </aside>
   )
 }

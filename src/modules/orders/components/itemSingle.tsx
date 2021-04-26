@@ -12,11 +12,11 @@ interface ItemSingleProps {
 
 const ItemSingle = (props: ItemSingleProps) => {
   return (
-    <li className="item" key={props.product.id}>
-      <span>
-        <span onClick={() => props.removeItem(props.product.id)}>-</span>
+    <li className="item menu-item" key={props.product.id}>
+      <span className="item-actions">
+        <span className="item-remove" onClick={() => props.removeItem(props.product.id)}>-</span>
         <span>{ props.children }</span>
-        <span onClick={() => props.addItem(props.product.id)}>+</span>
+        <span className="item-add" onClick={() => props.addItem(props.product.id)}>+</span>
       </span>
 
       <span className="item-name">{props.product.name}</span>

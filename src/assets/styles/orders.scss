@@ -1,0 +1,60 @@
+.orders {
+  display: flex;
+  margin-top: 30px;
+
+  .items-menu {
+    display: flex;
+    flex: 2;
+
+    .menu {
+      flex: 1;
+
+      .menu-item {
+
+        .item-actions {
+          margin-right: 15px;
+
+          .item-remove,
+          .item-add {
+            cursor: pointer;
+          }
+
+          span + span {
+            margin-left: 10px;
+          }
+        }
+
+        .item-name {
+          flex: 1;
+        }
+      }
+
+      & + menu {
+        @media screen and (min-width: 768px) {
+          margin-left: 20px;
+          border-left: 1px solid hsla(0, 0%, 0%, 0.12);
+          padding-left: 15px;
+        }
+      }
+    }
+  }
+
+  .order-sumary {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    .order-list {
+      flex: 1;
+
+      .item {
+        .item-quantity {
+          margin-right: 15px;
+        }
+        .item-name {
+          flex: 1;
+        }
+      }
+    }
+  }
+}

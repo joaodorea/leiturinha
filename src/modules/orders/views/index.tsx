@@ -4,8 +4,10 @@ import ProductsOrder from '@/models/ProductsOrder'
 
 import { AppContext } from '@/state/context'
 import ItemsMenu from '../components/itemsMenu'
-import productsList from '@/assets/mocks/products.json'
 import OrderSummary from '../components/orderSummary'
+
+import productsList from '@/assets/mocks/products.json'
+import '@/assets/styles/orders.scss'
 
 const Orders: React.FC = () => {
   const products: Product[] = productsList as Product[]
@@ -15,7 +17,7 @@ const Orders: React.FC = () => {
   useEffect(() => setContext({ ...context, order }), [ order ])
   
   return (
-    <section>
+    <section className="orders">
       <ItemsMenu updateOrder={setOrder} products={products} />
       <OrderSummary order={order} products={products} />
     </section>
