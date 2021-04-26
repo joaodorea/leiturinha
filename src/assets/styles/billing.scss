@@ -35,6 +35,22 @@
     }
   }
 
+  .payment-order {
+    max-width: 350px;
+
+    .item-name {
+      flex: 1;
+    }
+    .payment-total {
+      display: flex;
+
+      .price {
+        flex: 1;
+        text-align: right;
+      }
+    }
+  }
+
   .back-button {
     color: #525252;
     text-decoration: underline;

@@ -8,15 +8,17 @@ type PaymentOrderProps = {
 
 const PaymentOrder = (props: PaymentOrderProps) => {
   return (
-    <aside>
+    <aside className="payment-order">
       {/* <h2>{ customerName }'s order</h2> */}
       <ul>
         { props.order.map( item => {
-          return <li key={item.product_id}>{item.name} <span>{item.quantity}</span></li>
+          return <li className="item" key={item.product_id}>
+            <span className="item-name">{item.name}</span> <span className="item-quantity">x{item.quantity}</span>
+          </li>
         })}
       </ul>
 
-      <h3>Total <span className="price">{props.total}</span></h3>
+      <h3 className="payment-total">Total <span className="price">{props.total}</span></h3>
     </aside>
   )
 }
