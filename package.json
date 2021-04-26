@@ -2,16 +2,15 @@
   "name": "leiturinha-test",
   "description": "React app created using Typescript",
   "version": "1.0.0",
-  "main": "src/index.tsx",
   "repository": "https://github.com/joaodorea/leiturinha.git",
   "license": "MIT",
   "private": false,
   "scripts": {
     "start": "webpack-cli serve --mode=development --env development --open --hot",
-    "build": "webpack --mode=production --env production --progress",
+    "build:app": "webpack --mode=production --env production --progress",
     "lint": "eslint './src/**/*.{ts,tsx}'",
     "lint:fix": "eslint './src/**/*.{ts,tsx}' --fix",
-    "serve": "npm run build && serve ./dist"
+    "build": "npm run build:app && serve ./dist"
   },
   "devDependencies": {
     "@types/node": "13.13.50",
@@ -41,6 +40,9 @@
     "webpack": "5.28.0",
     "webpack-cli": "4.6.0",
     "webpack-dev-server": "3.11.2"
+  },
+  "engines": {
+    "node": "14.x"
   },
   "dependencies": {
     "react": "^17.0.0",
