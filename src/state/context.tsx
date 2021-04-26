@@ -12,7 +12,7 @@ type IContext = {
 const initState: IContext = {
   order: [],
   total: 0,
-  step: 'payment'
+  step: 'order'
 }
 
 interface IAppContext extends Array<IContext | Function> {
